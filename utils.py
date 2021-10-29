@@ -49,23 +49,21 @@ def parse_annotation(annotation_path):
     return {'boxes': boxes, 'labels': labels, 'difficulties': difficulties}
 
 
-def create_data_lists(voc07_path, voc12_path, output_folder):
+def create_data_lists(voc07_path, output_folder):
     """
     Create lists of images, the bounding boxes and labels of the objects in these images, and save these to file.
 
     :param voc07_path: path to the 'VOC2007' folder
-    :param voc12_path: path to the 'VOC2012' folder
     :param output_folder: folder where the JSONs must be saved
     """
     voc07_path = os.path.abspath(voc07_path)
-    voc12_path = os.path.abspath(voc12_path)
 
     train_images = list()
     train_objects = list()
     n_objects = 0
 
     # Training data
-    for path in [voc07_path, voc12_path]:
+    for path in [voc07_path]:
 
         # Find IDs of images in training data
         with open(os.path.join(path, 'ImageSets/Main/trainval.txt')) as f:
